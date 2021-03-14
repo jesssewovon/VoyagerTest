@@ -4,7 +4,7 @@ This is a test project done with laravel admin package Voyager
 
 ### 1. Download the project from github
 
-Follow this link to download the project from github. Move the project to your server web folder : e.g. www or htdocs
+Follow this link "https://github.com/jesssewovon/VoyagerTest.git" to download the project from github. Move the project to your server web folder : e.g. www or htdocs
 
 ### 2. Create Database
 
