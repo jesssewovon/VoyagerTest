@@ -8,7 +8,7 @@ Follow this link "https://github.com/jesssewovon/VoyagerTest.git" to download th
 
 ### 2. Create Database
 
-Open your Database engine system and create new database named "tp_log". Import in the database created earlier the sql file "tp_log.sql" located in "installation_steps" folder.
+Open your Database engine system and create new database named "tp_log". Import in the database created earlier the sql file "tp_log.sql".
 
 ### 3. Start the project
 
