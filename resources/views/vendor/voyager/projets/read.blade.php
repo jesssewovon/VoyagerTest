@@ -166,6 +166,7 @@
 
     <div class="page-content browse container-fluid">
         @include('voyager::alerts')
+        <h2>Log liste</h2>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-bordered">
@@ -182,7 +183,6 @@
                                            
                                         </th>
                                         @endforeach
-                                        <th class="actions text-right dt-not-orderable">{{ __('voyager::generic.actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>

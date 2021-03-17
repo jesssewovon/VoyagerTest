@@ -23,10 +23,10 @@ class LogsTableSeeder extends Seeder
 
         // And now, let's create a few articles in our database:
         $projet = Projet::where('id', 1)->firstOrFail();
-        for ($i = 0; $i < 70; $i++) {
+        for ($i = 0; $i < 60; $i++) {
             Log::create([
                 'message' => $faker->sentence,
-                'type' => 'Info',
+                'type' => 'option1',
                 'projet_id' => $projet->id,
                 'date_heure' => new \Datetime(),
                 'updated_at' => new \Datetime(),
