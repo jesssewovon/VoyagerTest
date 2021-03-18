@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 13 mars 2021 à 23:45
+-- Généré le : mer. 17 mars 2021 à 18:29
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -140,8 +140,8 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (59, 10, 'message', 'text', 'Message', 1, 1, 1, 1, 1, 1, '{}', 2),
 (60, 10, 'date_heure', 'timestamp', 'Date Heure', 1, 1, 1, 1, 1, 1, '{}', 3),
 (61, 10, 'type', 'select_dropdown', 'Type', 1, 1, 1, 1, 1, 1, '{\"default\":\"Info\",\"options\":{\"option1\":\"Info\",\"option2\":\"Erreur\",\"option3\":\"Warning\"}}', 4),
-(62, 10, 'projet_id', 'text', 'Projet Id', 1, 1, 1, 1, 1, 1, '{}', 5),
-(63, 10, 'log_belongsto_projet_relationship', 'relationship', 'projets', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Projet\",\"table\":\"projets\",\"type\":\"belongsTo\",\"column\":\"projet_id\",\"key\":\"id\",\"label\":\"libelle\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
+(62, 10, 'projet_id', 'number', 'Projet Id', 1, 0, 0, 0, 0, 0, '{}', 5),
+(63, 10, 'log_belongsto_projet_relationship', 'relationship', 'Projet', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Projet\",\"table\":\"projets\",\"type\":\"belongsTo\",\"column\":\"projet_id\",\"key\":\"id\",\"label\":\"libelle\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
 (64, 8, 'updated_at', 'text', 'Updated At', 1, 1, 1, 0, 0, 0, '{}', 3),
 (65, 8, 'created_at', 'text', 'Created At', 1, 1, 1, 0, 0, 0, '{}', 4),
 (66, 10, 'updated_at', 'text', 'Updated At', 1, 1, 1, 0, 0, 0, '{}', 6),
@@ -187,7 +187,7 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2021-03-13 19:02:05', '2021-03-13 19:02:05'),
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2021-03-13 19:02:07', '2021-03-13 19:02:07'),
 (8, 'projets', 'projets', 'Projet', 'Projets', NULL, 'App\\Models\\Projet', NULL, 'App\\Http\\Controllers\\VoyagerProjetsController', NULL, 1, 1, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-03-13 19:15:36', '2021-03-13 19:37:59'),
-(10, 'logs', 'logs', 'Log', 'Logs', NULL, 'App\\Models\\Log', NULL, 'App\\Http\\Controllers\\VoyagerLogsController', NULL, 1, 1, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-03-13 19:22:18', '2021-03-13 19:39:52');
+(10, 'logs', 'logs', 'Log', 'Logs', NULL, 'App\\Models\\Log', NULL, 'App\\Http\\Controllers\\VoyagerLogsController', NULL, 1, 1, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-03-13 19:22:18', '2021-03-17 15:54:56');
 
 -- --------------------------------------------------------
 
@@ -225,83 +225,63 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `projet_id` (`projet_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `logs`
 --
 
 INSERT INTO `logs` (`id`, `message`, `date_heure`, `type`, `projet_id`, `updated_at`, `created_at`) VALUES
-(1, 'Dignissimos aut ab quam quod quam.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(2, 'Quia dolores accusamus reprehenderit pariatur aut ut sed.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(3, 'Dolorem sunt quaerat enim dolorum consectetur ipsam voluptatibus fuga.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(4, 'Nisi nobis ut nesciunt ad omnis quae necessitatibus.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(5, 'Eligendi accusamus neque tempore perferendis.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(6, 'Est repudiandae non labore eaque inventore dolor.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(7, 'Debitis assumenda repellat non sint inventore.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(8, 'Qui magnam ex eum et architecto.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(9, 'Est esse blanditiis non aliquam eius.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(10, 'Totam dolorem molestiae quia aut doloribus quia aliquam.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(11, 'Sit eaque esse iusto dolor.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(12, 'Doloribus eos unde non sint tempora.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(13, 'Qui reprehenderit vel aperiam corrupti et.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(14, 'Nostrum vel quam aut saepe dolorem commodi est.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(15, 'Magnam dolorum amet suscipit molestias quia nihil perferendis.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(16, 'Dolor expedita a recusandae cum incidunt minima minus.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(17, 'Molestias iste odit ut non officia enim praesentium a.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(18, 'Et repellendus nisi eveniet quasi.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(19, 'Ut et provident at nobis.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(20, 'Cum voluptas sed ex quis ipsa quisquam.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(21, 'Harum doloremque ad iure quasi.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(22, 'Non ab ipsum ipsam ut.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(23, 'Repellat id qui nulla nisi pariatur qui a.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(24, 'Vel numquam dolor fugiat.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(25, 'Amet eos molestiae illum esse culpa.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(26, 'Ut consequatur ipsam ullam eos at.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(27, 'Aut ad incidunt suscipit ipsum veritatis deleniti.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(28, 'Dolores eum hic ut non dolorum nisi dolor.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(29, 'Porro autem maxime non autem dolor enim doloribus.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(30, 'Illo quis architecto unde rerum.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(31, 'Doloremque aut illo vel tempora esse.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(32, 'Aut dolor eum perspiciatis.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(33, 'Non nulla perferendis qui esse.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(34, 'Ad ea quia rerum neque nisi ipsa.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(35, 'Rem ducimus laborum qui dolorem consequatur.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(36, 'Qui voluptatem aliquid velit.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(37, 'Sint velit voluptates ea hic.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(38, 'Quia perferendis id incidunt in repudiandae ducimus.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(39, 'Tenetur quia quam consequatur vitae aperiam molestiae.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(40, 'Accusantium reiciendis nihil veritatis doloribus rerum aperiam.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(41, 'Harum qui in maxime repellendus consequuntur vero.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(42, 'Dolores ut harum pariatur quia illum totam ut repellendus.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(43, 'Nobis eaque at qui.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(44, 'Voluptatem quaerat et itaque dolores hic.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(45, 'Qui blanditiis explicabo quia.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(46, 'Est ea animi dolor harum.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(47, 'Reprehenderit deleniti id laborum vitae qui voluptas.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(48, 'Vitae occaecati omnis rerum rerum aut.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(49, 'Rerum repudiandae dolorem qui sint.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(50, 'Eos sequi cumque voluptas alias doloribus a.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(51, 'Odit earum delectus eos facilis rerum.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(52, 'Totam voluptas dolor nobis et aspernatur omnis et.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(53, 'Odit ratione aut error eum.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(54, 'Ratione doloremque non dolores voluptatum accusantium consequuntur nulla.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(55, 'Et cum asperiores est mollitia doloribus voluptates explicabo minus.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(56, 'Quia autem mollitia voluptatem porro reiciendis laborum.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(57, 'Molestiae ea sit et eum.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(58, 'Error accusantium vitae enim voluptatem.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(59, 'Atque unde consequatur est qui.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(60, 'Omnis vero aliquid est necessitatibus neque error.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(61, 'Aut numquam officia ut et rerum quod.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(62, 'Inventore eum fuga est impedit ipsam.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(63, 'Quia voluptas eos laudantium qui quia dignissimos magnam.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(64, 'Aliquid quisquam et soluta quia iure tempore dicta.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(65, 'Qui dolore inventore molestiae totam.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(66, 'Voluptate esse dolor quis.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(67, 'Repellat atque quidem sint a exercitationem autem qui sit.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(68, 'Aut tempora ad et omnis cumque error eos corrupti.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(69, 'Ratione aliquam unde explicabo quia velit omnis.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(70, 'Ab beatae velit qui ea quis similique nihil.', '2021-03-13 23:12:38', 'Info', 1, '2021-03-13 23:12:38', '2021-03-13 23:12:38');
+(1, 'Sit saepe maxime perspiciatis et dolorem nisi.', '2021-03-17 17:19:57', 'option1', 3, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(2, 'Autem debitis aliquam totam non blanditiis.', '2021-03-17 17:19:57', 'option1', 3, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(3, 'Ut et praesentium pariatur ipsam sed pariatur.', '2021-03-17 17:19:57', 'option1', 11, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(4, 'Dolor impedit et aut.', '2021-03-17 17:19:57', 'option2', 19, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(5, 'Ab et tempore fugiat suscipit fuga maxime qui officia.', '2021-03-17 17:19:57', 'option2', 9, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(6, 'Illo error optio qui a maiores.', '2021-03-17 17:19:57', 'option3', 3, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(7, 'Quis porro enim praesentium totam enim delectus.', '2021-03-17 17:19:57', 'option1', 1, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(8, 'Unde voluptate in nam laboriosam.', '2021-03-17 17:19:57', 'option1', 4, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(9, 'Occaecati rerum possimus voluptatem cumque molestias.', '2021-03-17 17:19:57', 'option1', 8, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(10, 'Ullam consequatur mollitia expedita iusto.', '2021-03-17 17:19:57', 'option1', 13, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(11, 'Quia rerum harum nobis commodi.', '2021-03-17 17:19:57', 'option1', 7, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(12, 'Et quibusdam tempora doloribus.', '2021-03-17 17:19:57', 'option2', 12, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(13, 'Odit eveniet voluptatem eum ad vero at.', '2021-03-17 17:19:57', 'option1', 16, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(14, 'Doloribus nemo et quam.', '2021-03-17 17:19:57', 'option3', 12, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(15, 'Omnis porro voluptas quo.', '2021-03-17 17:19:57', 'option1', 15, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(16, 'Omnis asperiores consequatur unde asperiores consequuntur voluptate nam.', '2021-03-17 17:19:57', 'option2', 8, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(17, 'Asperiores neque iste magnam nesciunt tempora.', '2021-03-17 17:19:57', 'option1', 3, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(18, 'Commodi qui est dolorem omnis eveniet occaecati sed quia.', '2021-03-17 17:19:57', 'option3', 16, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(19, 'Quos sapiente nesciunt cupiditate.', '2021-03-17 17:19:57', 'option1', 13, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(20, 'Veritatis velit quia quis sunt amet ut.', '2021-03-17 17:19:57', 'option2', 6, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(21, 'Quo et unde et.', '2021-03-17 17:19:57', 'option3', 2, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(22, 'Minus ut id et qui.', '2021-03-17 17:19:57', 'option3', 12, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(23, 'Dolores provident praesentium laboriosam.', '2021-03-17 17:19:57', 'option2', 15, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(24, 'Beatae iusto consectetur error quia delectus maiores eveniet occaecati.', '2021-03-17 17:19:57', 'option3', 11, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(25, 'Est et consequatur sint maxime omnis repellat.', '2021-03-17 17:19:57', 'option3', 18, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(26, 'Reiciendis qui sed rerum numquam culpa sed.', '2021-03-17 17:19:57', 'option1', 1, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(27, 'Doloremque accusantium atque quibusdam quos necessitatibus consequatur.', '2021-03-17 17:19:57', 'option3', 3, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(28, 'Velit possimus consequatur eum.', '2021-03-17 17:19:57', 'option3', 18, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(29, 'Omnis quo recusandae harum architecto aut quia.', '2021-03-17 17:19:57', 'option2', 11, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(30, 'Quos dolorem aut provident ut qui minima.', '2021-03-17 17:19:57', 'option1', 12, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(31, 'Suscipit vel itaque possimus veniam praesentium repellat qui.', '2021-03-17 17:19:57', 'option1', 12, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(32, 'Non maiores veritatis iste aliquid dolore.', '2021-03-17 17:19:57', 'option1', 5, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(33, 'Amet neque vel natus dolores architecto et.', '2021-03-17 17:19:57', 'option1', 17, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(34, 'Ea voluptatum sunt omnis velit voluptas dolore dolorum et.', '2021-03-17 17:19:57', 'option1', 15, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(35, 'Ut perspiciatis et voluptas ea omnis molestias consequatur.', '2021-03-17 17:19:57', 'option3', 2, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(36, 'Labore quidem qui aliquid ullam.', '2021-03-17 17:19:57', 'option1', 10, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(37, 'Reiciendis ea quia quae nam praesentium architecto.', '2021-03-17 17:19:57', 'option2', 17, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(38, 'Ab aut assumenda corporis modi sunt consequatur inventore.', '2021-03-17 17:19:57', 'option2', 8, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(39, 'Occaecati sapiente ducimus illo hic.', '2021-03-17 17:19:57', 'option3', 15, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(40, 'Debitis eligendi similique aut voluptas iure sint et corporis.', '2021-03-17 17:19:57', 'option1', 2, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(41, 'Cum modi sunt ut consequuntur.', '2021-03-17 17:19:57', 'option1', 19, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(42, 'Qui perferendis doloremque aut odio quaerat praesentium.', '2021-03-17 17:19:57', 'option1', 11, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(43, 'Tenetur autem nam et molestiae consectetur cum.', '2021-03-17 17:19:57', 'option3', 16, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(44, 'Sit ipsam magnam quis distinctio laboriosam.', '2021-03-17 17:19:57', 'option3', 19, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(45, 'Reprehenderit est pariatur maiores vero quis.', '2021-03-17 17:19:57', 'option3', 20, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(46, 'Non repellendus aut modi facere.', '2021-03-17 17:19:57', 'option3', 20, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(47, 'Esse iure et qui dignissimos exercitationem possimus.', '2021-03-17 17:19:57', 'option3', 19, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(48, 'Consequatur ut esse aliquam nemo totam.', '2021-03-17 17:19:57', 'option1', 17, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(49, 'Magni beatae esse quasi magni labore beatae.', '2021-03-17 17:19:57', 'option3', 19, '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(50, 'Voluptatum sed fugiat illum.', '2021-03-17 17:19:57', 'option3', 14, '2021-03-17 17:19:57', '2021-03-17 17:19:57');
 
 -- --------------------------------------------------------
 
@@ -449,7 +429,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
 --
 
 INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`) VALUES
-(1, 0, 'Hello World', 'Hang the jib grog grog blossom grapple dance the hempen jig gangway pressgang bilge rat to go on account lugger. Nelsons folly gabion line draught scallywag fire ship gaff fluke fathom case shot. Sea Legs bilge rat sloop matey gabion long clothes run a shot across the bow Gold Road cog league.', '<p>Hello World. Scallywag grog swab Cat o\'nine tails scuttle rigging hardtack cable nipper Yellow Jack. Handsomely spirits knave lad killick landlubber or just lubber deadlights chantey pinnace crack Jennys tea cup. Provost long clothes black spot Yellow Jack bilged on her anchor league lateen sail case shot lee tackle.</p>\r\n<p>Ballast spirits fluke topmast me quarterdeck schooner landlubber or just lubber gabion belaying pin. Pinnace stern galleon starboard warp carouser to go on account dance the hempen jig jolly boat measured fer yer chains. Man-of-war fire in the hole nipperkin handsomely doubloon barkadeer Brethren of the Coast gibbet driver squiffy.</p>', 'pages/page1.jpg', 'hello-world', 'Yar Meta Description', 'Keyword1, Keyword2', 'ACTIVE', '2021-03-13 19:02:08', '2021-03-13 19:02:08');
+(1, 1, 'Hello World', 'Hang the jib grog grog blossom grapple dance the hempen jig gangway pressgang bilge rat to go on account lugger. Nelsons folly gabion line draught scallywag fire ship gaff fluke fathom case shot. Sea Legs bilge rat sloop matey gabion long clothes run a shot across the bow Gold Road cog league.', '<p>Hello World. Scallywag grog swab Cat o\'nine tails scuttle rigging hardtack cable nipper Yellow Jack. Handsomely spirits knave lad killick landlubber or just lubber deadlights chantey pinnace crack Jennys tea cup. Provost long clothes black spot Yellow Jack bilged on her anchor league lateen sail case shot lee tackle.</p>\r\n<p>Ballast spirits fluke topmast me quarterdeck schooner landlubber or just lubber gabion belaying pin. Pinnace stern galleon starboard warp carouser to go on account dance the hempen jig jolly boat measured fer yer chains. Man-of-war fire in the hole nipperkin handsomely doubloon barkadeer Brethren of the Coast gibbet driver squiffy.</p>', 'pages\\March2021\\MEi41JZH7uABBSan51Ej.png', 'hello-world', 'Yar Meta Description', 'Keyword1, Keyword2', 'ACTIVE', '2021-03-13 19:02:08', '2021-03-16 18:45:55');
 
 -- --------------------------------------------------------
 
@@ -660,43 +640,33 @@ CREATE TABLE IF NOT EXISTS `projets` (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `projets`
 --
 
 INSERT INTO `projets` (`id`, `libelle`, `updated_at`, `created_at`) VALUES
-(1, 'Consectetur fugiat et praesentium perferendis labore.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(2, 'Quia vero sunt delectus repudiandae aut blanditiis corrupti.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(3, 'Aperiam ullam aut et possimus perspiciatis.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(4, 'Sapiente repellat nisi at deserunt at.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(5, 'Explicabo rerum vero nesciunt est.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(6, 'Eos voluptatem in necessitatibus molestiae excepturi.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(7, 'Ut eaque quidem nulla cum.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(8, 'Id necessitatibus et vel facere et.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(9, 'Quas voluptates dolores modi ut.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(10, 'Optio ipsa illum amet sit nulla magnam.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(11, 'Ex laboriosam ut non velit et vero.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(12, 'Id quia sapiente dicta.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(13, 'Quia occaecati odio earum adipisci nobis.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(14, 'Vero sit non pariatur aut.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(15, 'Optio consequatur illo et quasi est nemo.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(16, 'Est at velit neque perferendis accusantium cumque.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(17, 'Harum sunt cum id illo vel autem voluptas.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(18, 'Dolores sed ipsa reiciendis veritatis quisquam.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(19, 'Enim quis odio illum omnis maxime earum temporibus vel.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(20, 'Amet sit ullam assumenda omnis ut iure.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(21, 'Sint id voluptatem quis asperiores ducimus.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(22, 'Debitis placeat cum numquam et mollitia voluptatem eum.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(23, 'Et similique quia nesciunt ullam tenetur harum.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(24, 'Modi nam laudantium in enim tenetur.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(25, 'Veniam quasi cum enim eius aut nihil qui.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(26, 'Enim sequi cupiditate aut illo ipsam culpa.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(27, 'Nulla sit est quas et at incidunt.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(28, 'Ipsa consequuntur sunt autem molestiae nemo.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(29, 'Enim ut sunt laudantium.', '2021-03-13 23:12:38', '2021-03-13 23:12:38'),
-(30, 'Atque iure vitae ut eveniet qui odit.', '2021-03-13 23:12:38', '2021-03-13 23:12:38');
+(1, 'Deleniti dolores quia deleniti aut.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(2, 'Ut provident voluptates et amet et voluptatem atque id.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(3, 'Sunt veniam numquam molestiae ad explicabo.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(4, 'Maxime sint porro fuga id.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(5, 'Architecto voluptas maxime recusandae.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(6, 'Laboriosam et ipsa adipisci esse quia.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(7, 'Iure sit officiis et voluptatum animi exercitationem aut quas.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(8, 'Odio qui recusandae velit.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(9, 'Nisi accusamus in accusamus eligendi.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(10, 'Quod ut voluptatem sunt aliquid quis aut.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(11, 'Qui aut unde ipsum numquam.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(12, 'Velit voluptas omnis aut et nemo consequuntur esse.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(13, 'Iure est maiores quisquam sequi in voluptatem.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(14, 'Ut necessitatibus laborum eum hic est enim.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(15, 'Aut omnis voluptatem hic veniam non.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(16, 'Est nihil et magni aperiam aut.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(17, 'Nulla quo cupiditate aut.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(18, 'Dolor autem quo a atque aut.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(19, 'Dicta doloremque consequatur voluptatem dicta officia quaerat quasi.', '2021-03-17 17:19:57', '2021-03-17 17:19:57'),
+(20, 'Fugit dolore fugit nihil qui id reprehenderit voluptate.', '2021-03-17 17:19:57', '2021-03-17 17:19:57');
 
 -- --------------------------------------------------------
 
@@ -750,14 +720,14 @@ CREATE TABLE IF NOT EXISTS `settings` (
 INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`) VALUES
 (1, 'site.title', 'Site Title', 'Site Title', '', 'text', 1, 'Site'),
 (2, 'site.description', 'Site Description', 'Site Description', '', 'text', 2, 'Site'),
-(3, 'site.logo', 'Site Logo', '', '', 'image', 3, 'Site'),
-(4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', '', '', 'text', 4, 'Site'),
+(3, 'site.logo', 'Site Logo', 'settings\\March2021\\JS6J8IlXttZ7FEaFeoKF.png', '', 'image', 4, 'Site'),
+(4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 3, 'Site'),
 (5, 'admin.bg_image', 'Admin Background Image', '', '', 'image', 5, 'Admin'),
 (6, 'admin.title', 'Admin Title', 'Voyager', '', 'text', 1, 'Admin'),
 (7, 'admin.description', 'Admin Description', 'Welcome to Voyager. The Missing Admin for Laravel', '', 'text', 2, 'Admin'),
 (8, 'admin.loader', 'Admin Loader', '', '', 'image', 3, 'Admin'),
 (9, 'admin.icon_image', 'Admin Icon Image', '', '', 'image', 4, 'Admin'),
-(10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', '', '', 'text', 1, 'Admin');
+(10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', NULL, '', 'text', 1, 'Admin');
 
 -- --------------------------------------------------------
 

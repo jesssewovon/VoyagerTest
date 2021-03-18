@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Projet extends Model
 {
     use HasFactory;
+
+    public function logs()
+    {
+        return $this->hasMany(Log::class);
+    }
 }

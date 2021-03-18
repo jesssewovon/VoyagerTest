@@ -22,12 +22,15 @@ class LogsTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         // And now, let's create a few articles in our database:
-        $projet = Projet::where('id', 1)->firstOrFail();
-        for ($i = 0; $i < 60; $i++) {
+        //$projet = Projet::where('id', 1)->firstOrFail();
+        for ($i = 0; $i < 50; $i++) {
+            $nb = rand(1, 3);
+            $id_projet = rand(1, 20);//Note:Be sure you have at least projets in db with id 1 and 2, ...and 20
             Log::create([
                 'message' => $faker->sentence,
-                'type' => 'option1',
-                'projet_id' => $projet->id,
+                'type' => 'option'.$nb,
+                //'projet_id' => $projet->id,
+                'projet_id' => $id_projet,
                 'date_heure' => new \Datetime(),
                 'updated_at' => new \Datetime(),
                 'created_at' => new \Datetime(),

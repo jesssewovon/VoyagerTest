@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Projet;
 use App\Models\Log;
 
+use App\Http\Controllers\LogController;
+use App\Http\Resources\LogResource;
+use App\Http\Resources\ProjetResource;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,7 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('projets', function() {
+/*Route::get('projets', function() {
     // If the Content-Type and Accept headers are set to 'application/json', 
     // this will return a JSON structure. This will be cleaned up later.
     return Projet::all();
@@ -30,4 +34,12 @@ Route::get('logs', function() {
     // If the Content-Type and Accept headers are set to 'application/json', 
     // this will return a JSON structure. This will be cleaned up later.
     return Log::all();
+});*/
+
+Route::get('/logs', function () {
+    return LogResource::collection(Log::all());
+});
+
+Route::get('/projets', function () {
+    return ProjetResource::collection(Projet::all());
 });
