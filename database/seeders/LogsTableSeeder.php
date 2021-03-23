@@ -17,7 +17,7 @@ class LogsTableSeeder extends Seeder
     public function run()
     {
         //
-        Log::truncate();
+        //Log::truncate();
 
         $faker = \Faker\Factory::create();
 

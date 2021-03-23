@@ -16,7 +16,7 @@ class ProjetsTableSeeder extends Seeder
     public function run()
     {
         //
-        Projet::truncate();
+        //Projet::truncate();
 
         $faker = \Faker\Factory::create();
 
