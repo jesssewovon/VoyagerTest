@@ -8,7 +8,9 @@ Follow this link "https://github.com/jesssewovon/VoyagerTest.git" to download th
 
 ### 2. Create Database
 
-Open your Database engine system and create new database named "tp_log". Import in the database created earlier the sql file "tp_log.sql".
+       1. Open your Database engine system and create new database named "tp_log".
+       2. Run the migration command "php artisan migrate" to generate the database.
+       3. Run the following command to generate test datas for projets and logs "php artisan db:seed".
 
 ### 3. Start the project
 
