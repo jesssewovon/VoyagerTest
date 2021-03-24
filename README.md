@@ -19,7 +19,6 @@ Create an admin user account with `php artisan voyager:admin your@email.com --cr
 ### 4. Start the project
 
 Start up a local development server with `php artisan serve` And, visit [http://localhost:8000/admin](http://localhost:8000/admin).
-
 Connect with the previous admin account created.
 
 visit [http://localhost:8000/login](http://localhost:8000/login) to connect with a normal user created from admin dashboard.
